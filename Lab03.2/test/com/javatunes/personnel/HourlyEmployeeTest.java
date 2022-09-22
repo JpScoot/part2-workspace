@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.Date;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class HourlyEmployeeTest {
