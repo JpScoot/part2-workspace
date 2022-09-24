@@ -9,6 +9,7 @@
 package com.javatunes.product;
 
 public abstract class Product {
+
   private String code;
 
   public Product(String code) {
