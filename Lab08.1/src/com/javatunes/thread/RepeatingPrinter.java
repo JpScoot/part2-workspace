@@ -20,6 +20,7 @@ implements Runnable {
       }
       catch (InterruptedException e) {
       }
+      //Ignore this exception
     }
   }
 }
