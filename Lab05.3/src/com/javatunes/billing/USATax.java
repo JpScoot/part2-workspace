@@ -15,6 +15,15 @@ package com.javatunes.billing;
  *  
  * TODO: implement this algorithm.
  */
-public class USATax {
+public class USATax implements TaxCalculator {
+  //declare fields
+  private final double RATE = 0.1;
+  private final double THRESHOLD = 20;
+
+
+  @Override
+  public double taxAmount(double taxable) {
+    return (taxable > THRESHOLD) ? (RATE * (taxable - 20)) : 0;
+  }
 
 }
