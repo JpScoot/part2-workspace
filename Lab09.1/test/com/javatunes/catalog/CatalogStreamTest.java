@@ -51,7 +51,12 @@ public class CatalogStreamTest {
    */
   @Test
   public void testTitleEqualsArtistSortNaturalOrder() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getArtist().equals(item.getTitle()))
+        .sorted()
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
   
   /**
@@ -63,7 +68,12 @@ public class CatalogStreamTest {
    */
   @Test
   public void testPriceLessThanSortMusicCategory() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice() < 12.00)
+        .sorted(Comparator.comparing(item -> item.getMusicCategory()))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
   
   /**
@@ -73,7 +83,13 @@ public class CatalogStreamTest {
    */
   @Test
   public void testSortMusicCategorySortReleaseDateDesc() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getMusicCategory() == (MusicCategory.ROCK))
+        .filter(item -> item.getPrice() < 15)
+        .sorted(Comparator.comparing((MusicItem item) -> item.getReleaseDate()))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
   
   /**
@@ -84,7 +100,13 @@ public class CatalogStreamTest {
    */
   @Test
   public void testPriceGreaterThanSortPriceDescThenMusicCategory() {
-    // TODO
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice() > 17)
+        .sorted(Comparator.comparing(MusicItem::getPrice).reversed()
+        .thenComparing(MusicItem::getArtist))
+        .collect(Collectors.toList());
+
+    System.out.println(items);
   }
   
   /**
@@ -95,6 +117,11 @@ public class CatalogStreamTest {
    */
   @Test
   public void testReleaseDateSortArtist() {
+    List<MusicItem> items = allMusicItems.stream()
+        .filter(item -> item.getPrice() > 12)
+        .sorted(Comparator.comparing(item -> item.getReleaseDate().toString().startsWith("198")))
+        .collect(Collectors.toList());
+
     // TODO
   }
 }
