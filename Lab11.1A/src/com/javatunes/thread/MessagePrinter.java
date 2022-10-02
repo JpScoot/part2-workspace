@@ -9,13 +9,21 @@ package com.javatunes.thread;
 
 // TODO: extend the Thread class
 public class MessagePrinter extends Thread{
+
+  private static final int DEFAULT_INTERVAL = 1000;
+
   private String message;
+  private final int interval;
   
   public MessagePrinter(String message) {
+    this(message, DEFAULT_INTERVAL);
+
+  }
+
+  public MessagePrinter(String message, int interval){
     this.message = message;
-    // TODO: set the thread name [important when debugging]
-    this.message = message;
-    setName("Message Printer");
+    this.interval = interval;
+    setName(getClass().getSimpleName());
 
   }
   
@@ -33,7 +41,7 @@ public class MessagePrinter extends Thread{
       System.out.println(getName() + ": " + message);
 
       try {
-        Thread.sleep(1000);
+        Thread.sleep(interval);
       }
       catch (InterruptedException ignored) {
         //more on this later
