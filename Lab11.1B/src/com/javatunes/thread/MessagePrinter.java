@@ -10,7 +10,6 @@ package com.javatunes.thread;
 // DONE: extend the Thread class
 public class MessagePrinter implements Runnable {
 
-
   private final String message;
   private final String name;
 
